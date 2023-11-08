@@ -5,8 +5,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
+import Swal from 'sweetalert2'
+
+
+
+
 
 const Detailsblog = () => {
+  
 const {user} = useMyAuth()
 const data = useLoaderData();
 // console.log("Data:", data);
@@ -17,18 +23,23 @@ const [loading,setLoading] = useState(true)
 
 const handleCommentSubmit = (e) => {
   e.preventDefault()
-  const comment = e.target.commentBox.value;
+  const comment = e.target.commentBox.value; 
 
-  if (comment?.trim() !== '' && user ) {
-    axios.post(`http://localhost:5000/comments/${data?._id}`, {comment, user }, data._id )
-      .then(res=> {
-            if (res.data.insertedId) {  console.log('Comment posted successfully!', res);  
-            // loading( <progress className="progress m-5 w-56"></progress>)
-            e.target.reset() 
-            } else {  console.error('Failed to post comment.');  e.target.reset()   }
-          })
+    if(data.email !== user.email){
+      if (comment?.trim() !== '' && user ) {
+        axios.post(`http://localhost:5000/comments/${data?._id}`, {comment, user }, data._id )
+          .then(res=> {
+                if (res.data.insertedId) {  console.log('Comment posted successfully!', res);  
+                // loading( <progress className="progress m-5 w-56"></progress>)
+                e.target.reset() 
+                } else {  console.error('Failed to post comment.');  e.target.reset()   }
+              })
+        }
     }
-    else{ console.log('hovenah'); e.target.reset()  }
+    else{ console.log('hovenah'); e.target.reset() ;
+    Swal.fire({ icon: 'error', title: 'Oops...', text: 'You can not comment on your own blogs' });
+
+       }
 };
 
 

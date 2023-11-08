@@ -36,10 +36,6 @@ const router = createBrowserRouter([
           element: <Privetroute>  <Addblog></Addblog> </Privetroute>
         },
         {
-          path:'/fetured',
-          element: <Featuredblog></Featuredblog>
-        },
-        {
           path:'/allblog',
           element:<Allblog></Allblog>,
           loader: ()=> fetch('http://localhost:5000/blog')
@@ -58,7 +54,12 @@ const router = createBrowserRouter([
           path:'/blogupdate/:_id',
           element: <Privetroute> <Updateblog></Updateblog> </Privetroute> ,
           loader: ({params}) => fetch(`http://localhost:5000/blog/${params._id}`)
-        }        
+        }  ,
+        {
+          path:'/fetured',
+          element: <Featuredblog></Featuredblog>,
+          loader: ()=> fetch('http://localhost:5000/blog')
+        }      
       ]
     },
    
