@@ -28,22 +28,22 @@ function myFunction() {
 // console.log(user)
 
 const links = <>
-          <NavLink to={'/'}>        <li className=" ">  <a className='md:mx-1 md:text-[12px] hover:text-lime-300 hover:bg-transparent'>Home</a></li> </NavLink> 
-          <NavLink to={'/allblog'}>   <li className=" "><a className='md:mx-1 md:text-[12px] hover:text-lime-300 hover:bg-transparent'>All Blogs</a></li> </NavLink> 
-          <NavLink to={'/fetured'}> <li className=" ">  <a className='md:mx-1 md:text-[12px] hover:text-lime-300 hover:bg-transparent'>Featured Blogs</a></li> </NavLink> 
-          <NavLink to={'/addblog'}> <li className=" ">  <a className='md:mx-1 md:text-[12px] hover:text-lime-300 hover:bg-transparent'>Add Blog</a></li> </NavLink> 
-          <NavLink to={'/wishlist'}> <li className=" "> <a className='md:mx-1 md:text-[12px] hover:text-lime-300 hover:bg-transparent'>Wishlist</a></li> </NavLink> 
+          <NavLink to={'/'}>        <li className=" ">  <a className='md:mx-1 text-[12px] hover:text-lime-300 hover:bg-transparent'>Home</a></li> </NavLink> 
+          <NavLink to={'/allblog'}>   <li className=" "><a className='md:mx-1 text-[12px] hover:text-lime-300 hover:bg-transparent'>All Blogs</a></li> </NavLink> 
+          <NavLink to={'/fetured'}> <li className=" ">  <a className='md:mx-1 text-[12px] hover:text-lime-300 hover:bg-transparent'>Featured Blogs</a></li> </NavLink> 
+          <NavLink to={'/addblog'}> <li className=" ">  <a className='md:mx-1 text-[12px] hover:text-lime-300 hover:bg-transparent'>Add Blog</a></li> </NavLink> 
+          <NavLink to={'/wishlist'}> <li className=" "> <a className='md:mx-1 text-[12px] hover:text-lime-300 hover:bg-transparent'>Wishlist</a></li> </NavLink> 
 </>
 
 const links2 = <>
     
 {
   user && user ? <>
-                   <h2 className='font-bold mt-4 capitalize hover:text-blue-500 hover:shadow text-rose-400 mx-2 my-auto'>{user.displayName}</h2>
-                  <figure  className='mx-2 mt-2 hover:shadow hover:shadow-red-500 rounded-full'><img src={user?.photoURL} className='rounded-full w-8 h-8 my-auto  ' /> </figure>
-                  <button onClick={handleLogOut} ><li className="list-none md:bg-[#ebebe6] font-bold py-1 font-serif rounded border-none md:text-black  md:mx-2 capitalize"><a>LogOut</a></li> </button>    
+                   {/* <h2 className='font-bold mt-4 capitalize hover:text-blue-500 hover:shadow text-rose-400 mx-2 my-auto'>{user.displayName}</h2> */}
+                  <figure  className='mx-2 border mt-2 hover:shadow hover:shadow-red-500 rounded-full'><img src={user?.photoURL} className='rounded-full w-8 h-8 my-auto  ' /> </figure>
+                  <button onClick={handleLogOut} ><li className="list-none md:bg-[#ebebe6] w-[85px]   font-bold py-1 font-serif hover:bg-primary rounded border-none md:text-black transition-all  md:mx-2 capitalize"><p className='hover:bg-transparent hover:text-white transition-all'>LogOut</p></li> </button>    
                    </>      
-               :  <NavLink to={'/login'}><li className="list-none md:bg-[#ebebe6] font-serif font-bold py-1 rounded border-none md:mx-2  md:text-black capitalize"><a>login</a></li> </NavLink>
+               :  <NavLink to={'/login'}><li className="list-none md:bg-[#ebebe6] font-serif   md:font-bold py-1 rounded  hover:bg-primary border-none md:mx-2  md:text-black capitalize transition-all"><p className=' hover:bg-transparent hover:text-white transition-all'>login</p></li> </NavLink>
 
 }
 
@@ -66,7 +66,7 @@ const links2 = <>
       </div> 
      
       <div className="justify-start items-center">
-        <div className="px-2  font-bold  font-sans text-xl md:text-2xl ">Touch News</div>
+        <div className="px-2  font-bold uppercase font-sans text-lg md:text-2xl text-[#b3b1b1] ">Touch <span className='text-[#da301a96] text-xl'>News</span></div>
         <ul className="menu hidden mt-2 lg:flex menu-horizontal font-serif  md:ml-20  uppercase ">
             { links }
         </ul>
@@ -92,7 +92,7 @@ const links2 = <>
         {/* Sidebar content here */}
   <div className="drawer-side z-20">
     <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label> 
-    <ul className="menu p-4 w-80 min-h-full text-white font-serif space-y-5 text-lg uppercase bg-[#000000]">
+    <ul className="menu p-4 w-80 min-h-full text-white font-serif space-y-5 text-lg uppercase bg-[#2c2c2c]">
             { links  }
             { links2 }
     </ul>

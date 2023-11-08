@@ -66,7 +66,7 @@ return (
       
       <div className="absolute bg-[rgba(0,0,0,0.48)] hover:bg-transparent  transition-all w-full py-10 space-y-3 bottom-0  px-2">
         <h2 data-aos='fade-right' className="font-bold text-white   ">{blogs.currentTime}</h2>
-        <h2 data-aos='fade-right' className="font-bold text-rose-500 text-3xl  ">{blogs.title}</h2>
+        <h2 data-aos='fade-right' className="font-bold text-rose-500 text-xl md:text-3xl  ">{blogs.title}</h2>
         <p data-aos='fade-left' className="font-semibold">{blogs.shortdescription}</p>
         <h2 data-aos='fade-up' className="text-lg font-semibold ">{blogs.category}</h2>
         <div data-aos='fade-left' className="flex m-0 p-0 justify-between w-full">

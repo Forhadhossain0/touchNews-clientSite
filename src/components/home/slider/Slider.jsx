@@ -15,7 +15,7 @@ const Slider = () => {
 return <>
 
 
-<div className="mx-[10%] my-[5%]  App">
+<div className="mx-[2%] my-[5%]  App">
 
 <h1 className="mx-auto text-3xl text-center font-bold py-10" >Most Popular Adventure Blogs 📜</h1>
 
