@@ -1,0 +1,32 @@
+.item{
+    min-height: 30rem;
+    width: 25rem;
+    padding: 10px;
+    margin: 0 10px;
+    
+}
+.item img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    pointer-events: none;
+}
+.inner-carousel{
+    display: flex;
+    animation: slide 50s infinite ease-in-out ; 
+    transition:  all linear;
+}
+.carousel{
+    width: 100%;
+    cursor: grab;
+    overflow: hidden;
+}
+
+@keyframes slide {
+
+    0% { transform: translateX(0%); }
+    20% { transform: translateX(-10%); }
+    30% { transform: translateX(-30%); }
+    100% { transform: translateX(0%); }
+
+}
