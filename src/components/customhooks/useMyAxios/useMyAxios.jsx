@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 
 const axiosSecure = axios.create({
-    baseURL : 'https://fotouch-project.web.app',
+    baseURL : 'https://touchnews-backend.vercel.app',
     withCredentials: true 
 })
 

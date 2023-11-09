@@ -26,10 +26,10 @@ const Updateblog = () => {
       const addUpdateDataValues = { image, title, category, shortdescription, longdescription,  currentTime ,photoURL,email,displayName };
       console.log(addUpdateDataValues);
   
-      axios.put(`https://fotouch-project.web.app/blog/${_id}`, {addUpdateDataValues})
+      axios.put(`https://touchnews-backend.vercel.app/blog/${_id}`, {addUpdateDataValues})
         .then((res) => {
-            console.log(res.data)
-          if (res.data.modifiedCount > 0) {
+            console.log(res?.data)
+          if (res?.data?.modifiedCount > 0) {
             Swal.fire({  title: "Success!",  text: "Product updated successfully complete", icon: "success", confirmButtonText: "Cool",
             }); } else {
                 Swal.fire({

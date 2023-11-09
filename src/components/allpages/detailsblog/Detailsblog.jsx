@@ -26,14 +26,14 @@ const handleCommentSubmit = (e) => {
   const comment = e.target.commentBox.value; 
 
         if(user){
-          if(data.email !== user.email){
+          if(data?.email !== user?.email){
             if (comment?.trim() !== '' && user ) {
-              axios.post(`https://fotouch-project.web.app/comments/${data?._id}`, {comment, user }, data._id )
+              axios.post(`https://touchnews-backend.vercel.app/comments/${data?._id}`, {comment, user }, data._id )
                 .then(res=> {
-                      if (res.data.insertedId) {  console.log('Comment posted successfully!', res);  
+                      if (res?.data?.insertedId) {  console.log('Comment posted successfully!', res);  
                       // loading( <progress className="progress m-5 w-56"></progress>)
                       e.target.reset() 
-                      } else {  console.error('Failed to post comment.');  e.target.reset()   }
+                      } else {  console.log('Failed to post comment.');  e.target.reset()   }
                     })
               }
           }
@@ -47,9 +47,9 @@ const handleCommentSubmit = (e) => {
 
 
 useEffect(()=>{
-  axios.get(`https://fotouch-project.web.app/comments`)
+  axios.get(`https://touchnews-backend.vercel.app/comments`)
   .then(res=>{
-    setShow(res.data) 
+    setShow(res?.data) 
     setLoading(false);
   })
 },[])

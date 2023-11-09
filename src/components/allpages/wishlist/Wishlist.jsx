@@ -19,7 +19,7 @@ const Wishlist = () => {
   
   useEffect(()=> {
     axiosSecure.get(`/users?email=${user?.email}`)
-    .then(res => setBlog(res.data))
+    .then(res => setBlog(res?.data))
   },[axiosSecure])
   
   if(loading){
@@ -33,13 +33,13 @@ const Wishlist = () => {
         confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'  })
   .then( result => {
       if (result.isConfirmed) { 
-        axios.delete(`https://fotouch-project.web.app/users/${id}`)
+        axios.delete(`https://touchnews-backend.vercel.app/users/${id}`)
        .then(data => {
           console.log(data)
-          if(data.data.deletedCount > 0){
+          if(data?.data?.deletedCount > 0){
             Swal.fire( 'Deleted!', 'Your coffee has been deleted.','success'
             )}
-       const remaining = blog.filter(x  => x._id !== id);
+       const remaining = blog?.filter(x  => x._id !== id);
        setBlog(remaining)
          })
    }

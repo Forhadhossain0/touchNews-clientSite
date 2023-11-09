@@ -25,10 +25,10 @@ const handleAddProduct = e =>{
     // const addDataValues = {image, title, category, shortdescription,longdescription, currentTime};
     // console.log(addDataValues) 
     
-    axios.post('https://fotouch-project.web.app/blog', {image, title, category, shortdescription,longdescription, currentTime,  photoURL,email,displayName} )
+    axios.post('https://touchnews-backend.vercel.app/blog', {image, title, category, shortdescription,longdescription, currentTime,  photoURL,email,displayName} )
     .then(data => {
         console.log(data)
-        if(data.data.insertedId){
+        if(data?.data?.insertedId){
            Swal.fire({
             title: 'Success!',
             text: 'Do you want to continue',

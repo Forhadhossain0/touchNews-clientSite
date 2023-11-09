@@ -25,7 +25,7 @@ return <>
   {
     images.map(image=> {
       return (
-        <motion.div className="item    ">
+        <motion.div className="item "  key={image}>
           <img className=" relative"  src={image} alt="" />
           <div className='hover:bg-transparent transition-all bg-[rgba(0,0,0,0.50)] absolute h-[70%] w-[380px] bottom-3 rounded rounded-t-none flex justify-start  ' >
             <div className="flex items-center justify-center  mx-auto">

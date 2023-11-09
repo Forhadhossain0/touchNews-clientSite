@@ -30,8 +30,8 @@ const Allblog = () => {
   
 useEffect(() => {
   // axiosSecure.get(`/users?email=${user?.email}`)
-  axios.get(`https://fotouch-project.web.app/users?email=${user?.email}`)
-      .then(res => setAlreadyHas(res.data))
+  axios.get(`https://touchnews-backend.vercel.app/users?email=${user?.email}`)
+      .then(res => setAlreadyHas(res?.data))
 }, [user]);
 
 
@@ -41,21 +41,21 @@ useEffect(() => {
   const handleBlogSearch = (e)=>{
     setSearch(e.target.value);
   }
-  const forSearchBlogs = blog.filter( (x) =>  x.title && x.title.toLowerCase().includes(search.toLowerCase())  )
+  const forSearchBlogs = blog?.filter( (x) =>  x.title && x.title.toLowerCase().includes(search.toLowerCase())  )
+  
   
   const handleSort = () => {
-    const sortedServices = [...forSearchBlogs];
+
     if (sort === 'desc') {
-      sortedServices.sort((a, b) => (a.category).localeCompare(b.category));
+      [...forSearchBlogs].sort((a, b) => (a.category).localeCompare(b.category));
       setSort('asc');
     } else {
-      sortedServices.sort((a, b) => (b.category).localeCompare(a.category));
+      [...forSearchBlogs].sort((a, b) => (b.category).localeCompare(a.category));
       setSort('desc');
     }
-    setBlog(sortedServices);
+    setBlog( [...forSearchBlogs]);
   };
   
-
 
 // console.log(alreadyHas)
 
@@ -69,18 +69,18 @@ const handleAddWishlist = (blogs) => {
      Swal.fire({ icon: 'error', title: 'Oops...', text: 'Already added' }); } 
   else if(!user){ Swal.fire({ icon: 'error', title: 'Oops...', text: 'please login' }); }
   else {
-    axios.post(`https://fotouch-project.web.app/users`,{  _id, shortdescription, longdescription, image, title, category, currentTime, email} )
+    axios.post(`https://touchnews-backend.vercel.app/users`,{  _id, shortdescription, longdescription, image, title, category, currentTime, email} )
       .then((res) => {
         console.log(res);
-        if (res.data && res.data.insertedId) {
+        if (res?.data && res?.data.insertedId) {
           Swal.fire('Added to Wishlist!', '', 'success');
           // axiosSecure.get(`/users?email=${user?.email}`)
-          axios.get(`https://fotouch-project.web.app/users?email=${user?.email}`)
-          .then(res => setAlreadyHas(res.data))
-          .catch(error => console.error("erro wishlist data: ", error));
+          axios.get(`https://touchnews-backend.vercel.app/users?email=${user?.email}`)
+          .then(res => setAlreadyHas(res?.data))
+          .catch(error => console.log("erro wishlist data: ", error));
         } else { Swal.fire({ icon: 'error', title: 'Oops...', text: 'Not added' });  }
       })
-      .catch(error => {  console.error("Error adding to wishlist: ", error); Swal.fire({ icon: 'error', title: 'Oops...', text: 'Failed to add to wishlist' });  });
+      .catch(error => {  console.log("Error adding to wishlist: ", error); Swal.fire({ icon: 'error', title: 'Oops...', text: 'Failed to add to wishlist' });  });
   }
 };
 

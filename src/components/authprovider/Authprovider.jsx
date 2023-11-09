@@ -35,11 +35,11 @@ useEffect(()=>{
         
         // unique token and unique user from backend
         if(currentUser){
-            axios.post('https://fotouch-project.web.app/jwt',emailExist,{withCredentials:true})
-            .then(res => console.log('token have exist  ' ,res.data))
+            axios.post('https://touchnews-backend.vercel.app/jwt',emailExist,{withCredentials:true})
+            .then(res => console.log('token have exist  ' ,res?.data))
         }else{
-            axios.post('https://fotouch-project.web.app/logout',emailExist,{withCredentials:true})
-            .then(res => console.log('token not exist   ' ,res.data))
+            axios.post('https://touchnews-backend.vercel.app/logout',emailExist,{withCredentials:true})
+            .then(res => console.log('token not exist   ' ,res?.data))
         }
 
     })

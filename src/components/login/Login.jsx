@@ -22,9 +22,9 @@ const Login = () => {
 
             logIn(email,password)
             .then((result)=> { 
-              axios.patch('https://fotouch-project.web.app/users',{ email,  loginTime: result.user?.metadata?.lastSignInTime }  )                  
+              axios.patch('https://touchnews-backend.vercel.app/users',{ email,  loginTime: result.user?.metadata?.lastSignInTime }  )                  
               .then(res=>{ 
-                // console.log(res.user) 
+                console.log(res) 
                naviget(location?.state ? location.state : '/')
               })
             })
@@ -41,10 +41,10 @@ const Login = () => {
         const handleGoogleLogIn = () =>{
             signInWithPopup(auth,gprovider)
             .then(res=> {
-                naviget(location?.state ? location.state : '/')
-                console.log(res.user)
+                naviget(location?.state ? location?.state : '/')
+                console.log(res)
             })
-            .catch(err=> console.log(err))
+            .catch(err=> console.log(err, ' google provider cant login'))
         }
 
 

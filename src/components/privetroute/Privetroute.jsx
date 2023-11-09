@@ -8,7 +8,7 @@ const Privetroute = ({children}) => {
     console.log(location)
     
     if(loading){
-        return <div className="mx-auto flex justify-center  text-blue-600 p-20"> !Wait a second data loading. . . .  <span className="loading  text-center p-4 loading-spinner text-info loading-xl "> </span> </div>
+        return <div className="mx-auto flex items-center justify-center  text-blue-600 p-20"> !Wait a second data loading. . . .  <span className="loading  text-center p-4 loading-spinner text-info loading-xl "> </span> </div>
     }
 
     if(user?.email){

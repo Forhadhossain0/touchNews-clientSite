@@ -32,7 +32,7 @@ const location = useLocation()
           }
           else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,}$/.test(password)) {
             toast('Password must have at least one uppercase, lowercase, special character.');
-            return;
+            return; 
           }          
        
 
@@ -43,11 +43,11 @@ const location = useLocation()
             photoURL: photoURL
           })
 
-          const createdTime = result.user.metadata.lastSignInTime;
+          const createdTime = result?.user?.metadata?.lastSignInTime;
           const user = {email,displayName,photoURL,createdTime};
-          axios.post('https://fotouch-project.web.app/users', user )
+          axios.post('https://touchnews-backend.vercel.app/users', user )
           .then((res)=> {
-              console.log(res.data)
+              console.log(res)
               toast("Account Created Success. Please Wait..")
               setTimeout(()=> {naviget(location?.state ? location.state : '/')},3000)
             })

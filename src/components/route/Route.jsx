@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       {
         path: "/allblog",
         element: <Allblog></Allblog>,
-        loader: () => fetch("https://fotouch-project.web.app/blog"),
+        loader: () => fetch("https://touchnews-backend.vercel.app/blog"),
       },
       {
         path: "/wishlist",
@@ -53,13 +53,13 @@ const router = createBrowserRouter([
             <Wishlist></Wishlist>{" "}
           </Privetroute>
         ),
-        // loader : ()=> fetch('https://fotouch-project.web.app/users')
+        // loader : ()=> fetch('https://touchnews-backend.vercel.app/users')
       },
       {
         path: "/details/:_id",
         element: <Detailsblog></Detailsblog>,
         loader: ({ params }) =>
-          fetch(`https://fotouch-project.web.app/users/${params._id}`),
+          fetch(`https://touchnews-backend.vercel.app/users/${params._id}`),
       },
       {
         path: "/blogupdate/:_id",
@@ -70,12 +70,12 @@ const router = createBrowserRouter([
           </Privetroute>
         ),
         loader: ({ params }) =>
-          fetch(`https://fotouch-project.web.app/blog/${params._id}`),
+          fetch(`https://touchnews-backend.vercel.app/blog/${params._id}`),
       },
       {
         path: "/fetured",
         element: <Featuredblog></Featuredblog>,
-        loader: () => fetch("https://fotouch-project.web.app/blog"),
+        loader: () => fetch("https://touchnews-backend.vercel.app/blog"),
       },
     ],
   },
