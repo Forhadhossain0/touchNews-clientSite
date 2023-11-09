@@ -25,13 +25,14 @@ const Allblog = () => {
   const [search,setSearch] = useState('')
   const [sort,setSort] = useState('asc')
   
-  const axiosSecure = useMyAxios()
+  // const axiosSecure = useMyAxios()
 
   
 useEffect(() => {
-  axiosSecure.get(`/users?email=${user?.email}`)
+  // axiosSecure.get(`/users?email=${user?.email}`)
+  axios.get(`http://localhost:5000/users?email=${user?.email}`)
       .then(res => setAlreadyHas(res.data))
-}, [axiosSecure, user]);
+}, [user]);
 
 
   
@@ -73,7 +74,8 @@ const handleAddWishlist = (blogs) => {
         console.log(res);
         if (res.data && res.data.insertedId) {
           Swal.fire('Added to Wishlist!', '', 'success');
-          axiosSecure.get(`/users?email=${user?.email}`)
+          // axiosSecure.get(`/users?email=${user?.email}`)
+          axios.get(`http://localhost:5000/users?email=${user?.email}`)
           .then(res => setAlreadyHas(res.data))
           .catch(error => console.error("erro wishlist data: ", error));
         } else { Swal.fire({ icon: 'error', title: 'Oops...', text: 'Not added' });  }

@@ -12,10 +12,10 @@ const Privetroute = ({children}) => {
     }
 
     if(user?.email){
-        return children;
+        return children 
     }
   
-    return  <Navigate state={location?.pathname} replace to={'/login'}></Navigate>
+    return  <Navigate state={location?.pathname}  to={'/login'}   replace ></Navigate>
 
 
 
