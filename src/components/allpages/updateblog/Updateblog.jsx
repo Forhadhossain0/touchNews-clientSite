@@ -3,9 +3,12 @@ import AOS from 'aos';
 import Swal from "sweetalert2";
 import {  useLoaderData } from "react-router-dom";
 import axios from "axios";
+import useMyAuth from "../../customhooks/useMyAuth/useMyAuth";
 
 const Updateblog = () => {
- 
+  
+  const {user} = useMyAuth()
+  const {photoURL,email,displayName} = user  ;
 
     const data =  useLoaderData()
     const { _id, image, title, category, shortdescription, longdescription, currentTime } = data;
@@ -20,7 +23,7 @@ const Updateblog = () => {
       const longdescription = form.longdescription.value; 
       const currentTime = new Date();
 
-      const addUpdateDataValues = { image, title, category, shortdescription, longdescription,  currentTime  };
+      const addUpdateDataValues = { image, title, category, shortdescription, longdescription,  currentTime ,photoURL,email,displayName };
       console.log(addUpdateDataValues);
   
       axios.put(`http://localhost:5000/blog/${_id}`, {addUpdateDataValues})
@@ -44,7 +47,9 @@ const Updateblog = () => {
 AOS.init();
 return (
 
-    <div>
+    <div >
+    
+
            
            <div data-aos="zoom-up" className=" text-center min-h-screen  ">  
            {/* <Link to={'/'} ><h1 className="text-left font-bold hover:text-red-500"> &larr; Back to home</h1></Link> */}
@@ -83,18 +88,24 @@ return (
               </div>
 
 
-              <div data-aos="fade-left" className="md:ml-20 text-left space-y-5 font-semibold">
+              <div data-aos="fade-left" className="md:ml-20 text-left space-y-8 font-semibold">
                  <div>  
                     <label htmlFor="">Short description</label><br /> <input defaultValue={shortdescription} required placeholder='Enter a Short description' type="text" name="shortdescription" className=" bg-[#f7f2e43a]  border my-2 w-[420px] h-12 p-2" />
                 </div>
                  <div>  
                     <label htmlFor="">Long description</label><br /> <input defaultValue={longdescription} required placeholder='Enter a Long description' type="text" name="longdescription" className=" bg-[#f7f2e43a]  border my-2 w-[420px] h-12 p-2" />
                 </div>
-         
-               </div>
+                 
+                  <div className='border mt-8 px-5 py-3 flex items-center justify-start  cursor-pointer text-gray-400  '>
+                    <h4 className='px-3 font-sans'>blog owner : </h4>
+                   <img className='w-8 mx-2 h-8 rounded-full border-2 ' src={user?.photoURL} alt="" />
+                    <h3 className=' text-center text-[12px]'>{user?.displayName}</h3>
+                   </div>
+
+                  </div>
 
              </div>
-                <div  ><input type="submit" value='Submit' className=" w-[69%] h-12  mt-10 mb-8 text-lg font-mono font-bold text-white bg-[#6b6be7] border  rounded hover:bg-red-400 transition-all" /></div>
+                <div  ><input type="submit" value='Submit' className=" w-[75%] h-12  mt-10 mb-8 text-lg font-mono font-bold text-white bg-[#6b6be7] border  rounded hover:bg-red-400 transition-all" /></div>
             </form>        
            </div>
         </div>

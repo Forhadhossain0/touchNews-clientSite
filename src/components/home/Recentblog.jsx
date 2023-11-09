@@ -34,6 +34,7 @@ const handleAddWishlist = (blogs) => {
 
     if (existingBlog) {
        Swal.fire({ icon: 'error', title: 'Oops...', text: 'Already added' }); } 
+    else if(!user){ Swal.fire({ icon: 'error', title: 'Oops...', text: 'please login' }); }
     else {
       axios.post(`http://localhost:5000/users`,{  _id, shortdescription, longdescription, image, title, category, currentTime, email} )
         .then((res) => {

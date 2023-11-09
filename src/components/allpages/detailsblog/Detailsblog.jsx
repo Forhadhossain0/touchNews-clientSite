@@ -25,21 +25,24 @@ const handleCommentSubmit = (e) => {
   e.preventDefault()
   const comment = e.target.commentBox.value; 
 
-    if(data.email !== user.email){
-      if (comment?.trim() !== '' && user ) {
-        axios.post(`http://localhost:5000/comments/${data?._id}`, {comment, user }, data._id )
-          .then(res=> {
-                if (res.data.insertedId) {  console.log('Comment posted successfully!', res);  
-                // loading( <progress className="progress m-5 w-56"></progress>)
-                e.target.reset() 
-                } else {  console.error('Failed to post comment.');  e.target.reset()   }
-              })
-        }
-    }
-    else{ console.log('hovenah'); e.target.reset() ;
-    Swal.fire({ icon: 'error', title: 'Oops...', text: 'You can not comment on your own blogs' });
-
-       }
+        if(user){
+          if(data.email !== user.email){
+            if (comment?.trim() !== '' && user ) {
+              axios.post(`http://localhost:5000/comments/${data?._id}`, {comment, user }, data._id )
+                .then(res=> {
+                      if (res.data.insertedId) {  console.log('Comment posted successfully!', res);  
+                      // loading( <progress className="progress m-5 w-56"></progress>)
+                      e.target.reset() 
+                      } else {  console.error('Failed to post comment.');  e.target.reset()   }
+                    })
+              }
+          }
+          else{ console.log('hovenah'); e.target.reset() ;
+          Swal.fire({ icon: 'error', title: 'Oops...', text: 'You can not comment on your own blogs' });
+             }
+        } else{ console.log('hovenah2'); e.target.reset() ;
+        Swal.fire({ icon: 'error', title: 'Oops...', text: 'please login' });
+           }
 };
 
 
@@ -52,7 +55,7 @@ useEffect(()=>{
 },[])
 console.log(show)
 
-
+console.log('daat:' ,data)
 
 AOS.init()
   return (
