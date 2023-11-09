@@ -26,7 +26,7 @@ const Updateblog = () => {
       const addUpdateDataValues = { image, title, category, shortdescription, longdescription,  currentTime ,photoURL,email,displayName };
       console.log(addUpdateDataValues);
   
-      axios.put(`http://localhost:5000/blog/${_id}`, {addUpdateDataValues})
+      axios.put(`https://fotouch-project.web.app/blog/${_id}`, {addUpdateDataValues})
         .then((res) => {
             console.log(res.data)
           if (res.data.modifiedCount > 0) {

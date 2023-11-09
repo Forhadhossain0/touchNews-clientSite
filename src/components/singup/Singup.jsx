@@ -45,7 +45,7 @@ const location = useLocation()
 
           const createdTime = result.user.metadata.lastSignInTime;
           const user = {email,displayName,photoURL,createdTime};
-          axios.post('http://localhost:5000/users', user )
+          axios.post('https://fotouch-project.web.app/users', user )
           .then((res)=> {
               console.log(res.data)
               toast("Account Created Success. Please Wait..")

@@ -22,7 +22,7 @@ const Login = () => {
 
             logIn(email,password)
             .then((result)=> { 
-              axios.patch('http://localhost:5000/users',{ email,  loginTime: result.user?.metadata?.lastSignInTime }  )                  
+              axios.patch('https://fotouch-project.web.app/users',{ email,  loginTime: result.user?.metadata?.lastSignInTime }  )                  
               .then(res=>{ 
                 // console.log(res.user) 
                naviget(location?.state ? location.state : '/')

@@ -25,7 +25,7 @@ const handleAddProduct = e =>{
     // const addDataValues = {image, title, category, shortdescription,longdescription, currentTime};
     // console.log(addDataValues) 
     
-    axios.post('http://localhost:5000/blog', {image, title, category, shortdescription,longdescription, currentTime,  photoURL,email,displayName} )
+    axios.post('https://fotouch-project.web.app/blog', {image, title, category, shortdescription,longdescription, currentTime,  photoURL,email,displayName} )
     .then(data => {
         console.log(data)
         if(data.data.insertedId){

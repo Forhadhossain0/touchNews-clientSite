@@ -33,7 +33,7 @@ const Wishlist = () => {
         confirmButtonColor: '#3085d6', cancelButtonColor: '#d33', confirmButtonText: 'Yes, delete it!'  })
   .then( result => {
       if (result.isConfirmed) { 
-        axios.delete(`http://localhost:5000/users/${id}`)
+        axios.delete(`https://fotouch-project.web.app/users/${id}`)
        .then(data => {
           console.log(data)
           if(data.data.deletedCount > 0){

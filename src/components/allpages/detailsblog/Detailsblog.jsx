@@ -28,7 +28,7 @@ const handleCommentSubmit = (e) => {
         if(user){
           if(data.email !== user.email){
             if (comment?.trim() !== '' && user ) {
-              axios.post(`http://localhost:5000/comments/${data?._id}`, {comment, user }, data._id )
+              axios.post(`https://fotouch-project.web.app/comments/${data?._id}`, {comment, user }, data._id )
                 .then(res=> {
                       if (res.data.insertedId) {  console.log('Comment posted successfully!', res);  
                       // loading( <progress className="progress m-5 w-56"></progress>)
@@ -47,7 +47,7 @@ const handleCommentSubmit = (e) => {
 
 
 useEffect(()=>{
-  axios.get(`http://localhost:5000/comments`)
+  axios.get(`https://fotouch-project.web.app/comments`)
   .then(res=>{
     setShow(res.data) 
     setLoading(false);

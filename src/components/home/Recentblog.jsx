@@ -17,7 +17,7 @@ const email = user?.email;
 const axiosSecure = useMyAxios()
 
 useEffect(() => {
-  axios.get('http://localhost:5000/blog')
+  axios.get('https://fotouch-project.web.app/blog')
       .then(res => setRecentBlog(res.data))
 
   axiosSecure.get(`/users?email=${user?.email}`)
@@ -36,7 +36,7 @@ const handleAddWishlist = (blogs) => {
        Swal.fire({ icon: 'error', title: 'Oops...', text: 'Already added' }); } 
     else if(!user){ Swal.fire({ icon: 'error', title: 'Oops...', text: 'please login' }); }
     else {
-      axios.post(`http://localhost:5000/users`,{  _id, shortdescription, longdescription, image, title, category, currentTime, email} )
+      axios.post(`https://fotouch-project.web.app/users`,{  _id, shortdescription, longdescription, image, title, category, currentTime, email} )
         .then((res) => {
           console.log(res);
           if (res.data && res.data.insertedId) {

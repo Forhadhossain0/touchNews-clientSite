@@ -30,7 +30,7 @@ const Allblog = () => {
   
 useEffect(() => {
   // axiosSecure.get(`/users?email=${user?.email}`)
-  axios.get(`http://localhost:5000/users?email=${user?.email}`)
+  axios.get(`https://fotouch-project.web.app/users?email=${user?.email}`)
       .then(res => setAlreadyHas(res.data))
 }, [user]);
 
@@ -69,13 +69,13 @@ const handleAddWishlist = (blogs) => {
      Swal.fire({ icon: 'error', title: 'Oops...', text: 'Already added' }); } 
   else if(!user){ Swal.fire({ icon: 'error', title: 'Oops...', text: 'please login' }); }
   else {
-    axios.post(`http://localhost:5000/users`,{  _id, shortdescription, longdescription, image, title, category, currentTime, email} )
+    axios.post(`https://fotouch-project.web.app/users`,{  _id, shortdescription, longdescription, image, title, category, currentTime, email} )
       .then((res) => {
         console.log(res);
         if (res.data && res.data.insertedId) {
           Swal.fire('Added to Wishlist!', '', 'success');
           // axiosSecure.get(`/users?email=${user?.email}`)
-          axios.get(`http://localhost:5000/users?email=${user?.email}`)
+          axios.get(`https://fotouch-project.web.app/users?email=${user?.email}`)
           .then(res => setAlreadyHas(res.data))
           .catch(error => console.error("erro wishlist data: ", error));
         } else { Swal.fire({ icon: 'error', title: 'Oops...', text: 'Not added' });  }

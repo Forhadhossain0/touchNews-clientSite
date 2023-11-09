@@ -35,10 +35,10 @@ useEffect(()=>{
         
         // unique token and unique user from backend
         if(currentUser){
-            axios.post('http://localhost:5000/jwt',emailExist,{withCredentials:true})
+            axios.post('https://fotouch-project.web.app/jwt',emailExist,{withCredentials:true})
             .then(res => console.log('token have exist  ' ,res.data))
         }else{
-            axios.post('http://localhost:5000/logout',emailExist,{withCredentials:true})
+            axios.post('https://fotouch-project.web.app/logout',emailExist,{withCredentials:true})
             .then(res => console.log('token not exist   ' ,res.data))
         }
 
